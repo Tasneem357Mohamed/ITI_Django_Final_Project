@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  .btn-custom-danger,
+  .btn-custom-secondary {
+    border-radius: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 20px;
+    height: 45px;
+    padding: 0 20px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .btn-custom-danger {
+    background-color: #a6a1c1;
+    color: #322f50;
+    border: 2px solid #322f50;
+  }
+
+  .btn-custom-danger:hover {
+    background-color: #7d77a4;
+    border-color: #6c757d;
+    color: white;
+  }
+
+  .btn-custom-secondary {
+    background-color: #fff;
+    color: #322f50;
+    border: 2px solid #322f50;
+  }
+
+  .btn-custom-secondary:hover {
+    background-color: #322f50;
+    color: white;
+    border-color: #6c757d;
+  }
+
+  .button-flex-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+
+  .text-center h3,
+  .text-center h4 {
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 576px) {
+    .btn-custom-danger,
+    .btn-custom-secondary {
+      width: 100%;
+      font-size: 18px;
+      height: auto;
+      padding: 12px 0;
+    }
+
+    .button-flex-container {
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+      align-items: center;
+    }
+
+    .text-center h3 {
+      font-size: 20px;
+    }
+
+    .text-center h4 {
+      font-size: 18px;
+    }
+  }
+</style>
+
+<div class="text-center mt-5" style="padding-top: 100px; padding-left: 10px; padding-right: 10px;">
+  <h3>Are you sure you want to delete this record?</h3>
+  <h4><strong>{{ record }}</strong></h4>
+
+  <form method="POST">
+    {% csrf_token %}
+    <div class="button-flex-container">
+      <button type="submit" class="btn-custom-danger">Yes, Delete</button>
+      <a href="{% url 'view-record' record.id %}" class="btn-custom-secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

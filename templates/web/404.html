@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .error-404-container {
+        min-height: 70vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .error-code {
+        font-size: 8rem;
+        font-weight: 800;
+        animation: bounceIn 1s ease-in-out;
+        color: #4a447b;
+    }
+
+    .error-text {
+        font-size: 1.5rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    @keyframes bounceIn {
+        0% {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .btn-home {
+        margin-top: 2rem;
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+        border-radius: 50px;
+    }
+
+    .custom-create-btn {
+        color: #322f50;
+        background-color: #dcd9ec;
+        border: 1px solid #322f50;
+        border-radius: 20px;
+        padding: 10px 20px;
+        font-size: 20px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        margin-top: 30px;
+    }
+
+    .custom-create-btn:hover {
+        background-color: #322f50;
+        transform: translateY(-2px);
+        color: #fff;
+        border: 1px solid #322f50;
+    }
+
+    /* ✅ Responsive adjustments */
+    @media (max-width: 768px) {
+        .error-code {
+            font-size: 5rem;
+        }
+        .error-text {
+            font-size: 1.2rem;
+        }
+        .custom-create-btn {
+            font-size: 16px;
+            padding: 8px 16px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .error-code {
+            font-size: 3.5rem;
+        }
+        .error-text {
+            font-size: 1rem;
+        }
+        .custom-create-btn {
+            font-size: 14px;
+            padding: 6px 14px;
+        }
+    }
+</style>
+
+<div class="error-404-container">
+    <div class="error-code">404</div>
+    <p class="lead fw-bold">Oops! Page not found.</p>
+    <p class="error-text">It seems the page you're looking for doesn't exist or has been moved.</p>
+    <a href="{% url 'dashboard' %}" class="custom-create-btn">
+        <i class="fas fa-home me-2"></i>Back to Dashboard
+    </a>
+</div>
+{% endblock %}

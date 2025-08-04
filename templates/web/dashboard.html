@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .custom-create-btn, .custom-create-btn1, .custom-view-btn {
+        background-color: #dcd9ec;
+        color: #322f50;
+        border: 1px solid #322f50;
+        border-radius: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        transition: 0.3s ease;
+        text-decoration: none;
+    }
+
+    .custom-create-btn:hover,
+    .custom-create-btn1:hover,
+    .custom-view-btn:hover {
+        background-color: #322f50;
+        color: #fff;
+        transform: scale(1.05);
+    }
+
+    .custom-view-btn {
+        border-radius: 10px;
+        font-size: 14px;
+        padding: 5px 12px;
+    }
+
+    .search-form {
+        margin-top: 30px;
+    }
+
+    .search-input {
+        width: 100%;
+        max-width: 400px;
+        border: 2px solid #4a447b;
+        border-radius: 10px;
+        padding: 10px 15px;
+        font-size: 16px;
+        background-color: #f4f2fc;
+        color: #322f50;
+    }
+
+    .search-input::placeholder {
+        color: #999;
+    }
+
+    .search-input:focus {
+        border-color: #322f50;
+        box-shadow: 0 0 10px rgba(74, 68, 123, 0.3);
+        outline: none;
+    }
+
+    .search-button {
+        background-color: #4a447b;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    .search-button:hover {
+        background-color: #322f50;
+    }
+
+    .table-wrapper {
+        background-color: #fdfcff;
+        box-shadow:
+            0 6px 12px rgba(140, 88, 255, 0.3),
+            0 12px 30px rgba(100, 50, 200, 0.35);
+        padding: 20px;
+        border-radius: 20px;
+        overflow-x: auto;
+        margin: 0 auto 60px auto;
+        max-width: 100%;
+    }
+
+    table.table {
+        text-align: center;
+        border: 1px solid #dee2e6;
+        min-width: 800px;
+    }
+
+    @media (max-width: 768px) {
+        h2 {
+            font-size: 20px;
+            margin: 20px;
+        }
+
+        .custom-create-btn {
+            font-size: 14px;
+            padding: 8px 16px;
+        }
+
+        .search-input {
+            width: 100%;
+        }
+
+        .search-form {
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        table.table {
+            font-size: 13px;
+        }
+    }
+</style>
+
+<h2 class="text-center mt-5">Welcome to the dashboard page, <b>{{ user }}</b></h2>
+
+<div class="text-center mt-4">
+    <a href="{% url 'create-record' %}" class="btn custom-create-btn">
+        Create New Record <i class="fa-solid fa-arrow-right"></i>
+    </a>
+</div>
+
+<hr style="border: 1px solid #000; margin: 30px auto; width: 80%;">
+
+<form method="get" action="{% url 'dashboard' %}" class="search-form d-flex justify-content-center mb-5">
+    <input type="text" name="search" value="{{ search_query }}" placeholder="Search by full name"
+           class="form-control search-input me-2" />
+    <button type="submit" class="btn search-button">Search</button>
+</form>
+
+<div class="table-wrapper">
+    {% if records %}
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First_Name</th>
+                    <th>Last_Name</th>
+                    <th>Category</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Length</th>
+                    <th>Weight</th>
+                    <th>Date</th>
+                    <th>View</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rec in records %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ rec.first_name }}</td>
+                        <td>{{ rec.last_name }}</td>
+                        <td>{{ rec.category }}</td>
+                        <td>{{ rec.phone }}</td>
+                        <td>{{ rec.address }}</td>
+                        <td>{{ rec.length }}</td>
+                        <td>{{ rec.weight }}</td>
+                        <td>{{ rec.created_at }}</td>
+                        <td>
+                            <a href="{% url 'view-record' rec.id %}" class="btn custom-view-btn">View</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% elif search_query %}
+        <div class="alert alert-info text-center mx-auto mt-5"
+             style="max-width: 700px; background-color: #f0e9ff; color: #322f50; border: 1px solid #322f50; border-radius: 10px; font-size:18px;">
+            No records found for "<strong>{{ search_query }}</strong>". Try a different name.
+        </div>
+    {% else %}
+        <div class="alert alert-warning text-center mx-auto mt-5"
+             style="max-width: 700px; background-color: #dcd9ec; color: #322f50; border: 1px solid #322f50; border-radius: 10px; font-size:18px;">
+            You don't have any records yet.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

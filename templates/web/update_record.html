@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<style>
+  .custom-btn {
+    background-color: #a6a1c1;
+    color: #322f50;
+    border-color: #322f50;
+    width: 180px;
+    height: 38px;
+    border-radius: 12px;
+    font-size: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    line-height: 22px;
+    text-decoration: none;
+  }
+
+  .custom-btn:hover {
+    background-color: #7d77a4;
+    border-color: #6c757d;
+    color: white;
+  }
+
+  .custom-btn-secondary {
+    background-color: #fff;
+    color: #322f50;
+    border-color: #322f50;
+    width: 90px;
+    height: 38px;
+    border-radius: 12px;
+    font-size: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    line-height: 22px;
+    text-decoration: none;
+  }
+
+  .custom-btn-secondary:hover {
+    background-color: #322f50;
+    border-color: #6c757d;
+    color: white;
+  }
+
+  form .form-group {
+    margin-top: 20px;
+  }
+
+  .form-layout {
+    border-radius: 16px;
+    background-color: #f4f2fb;
+    box-shadow:
+      0 6px 12px rgba(88, 47, 162, 0.3),
+      0 12px 30px rgba(61, 30, 120, 0.35);
+    transition: box-shadow 0.3s ease;
+    max-width: 500px;
+    padding: 25px 20px;
+    margin: 30px auto;
+  }
+
+  .form-layout h1 {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 576px) {
+    .custom-btn,
+    .custom-btn-secondary {
+      width: 100%;
+      font-size: 18px;
+    }
+
+    .form-layout h1 {
+      font-size: 22px;
+    }
+  }
+</style>
+
+<div class="container bg-light form-layout">
+  <h1 class="text-center">Update Record</h1>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <div class="text-center mt-4 d-flex justify-content-center flex-wrap gap-3">
+      <button type="submit" class="btn custom-btn">Save</button>
+      <a href="{% url 'view-record' record.id %}" class="btn custom-btn-secondary ms-2">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

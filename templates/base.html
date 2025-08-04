@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  <!-- ✅ Add this -->
+    <title>CRM</title>
+
+    <!-- Bootstrap & FontAwesome -->
+    <link rel="stylesheet" href="https://bootswatch.com/5/pulse/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer {
+        border-top: 1px solid #dee2e6;
+    }
+</style>
+
+</head>
+<body>
+    {% include 'parts/navbar.html' %}
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="text-center py-4 bg-light text-muted">
+        <div class="container">
+            <p class="mb-1">© 2025 CRM System | All rights reserved.</p>
+            <small>Built with Django</small>
+        </div>
+    </footer>
+</body>
+</html>

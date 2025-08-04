@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<style>
+  .custom-login-btn {
+    background-color: #322f50;
+    color: #ffffff;
+    border: 1px solid #8c88af;
+    border-radius: 15px;
+    padding: 10px 20px;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    max-width: 150px;
+  }
+
+  .custom-login-btn:hover {
+    background-color: #322f50;
+    transform: scale(1.05);
+    color: #fff;
+  }
+
+  form .form-group {
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 576px) {
+    h1 {
+      font-size: 28px;
+    }
+
+    .custom-login-btn {
+      font-size: 16px;
+      padding: 8px 16px;
+    }
+  }
+  .purple-shadow-box {
+  box-shadow:
+    0 6px 12px rgba(88, 47, 162, 0.5),
+    0 12px 30px rgba(61, 30, 120, 0.55);
+  border: 1px solid #bca7f5;
+  transition: box-shadow 0.3s ease-in-out, transform 0.2s ease;
+  background-color: #f8f6ff;
+  }
+
+  .purple-shadow-box:hover {
+    box-shadow:
+      0 8px 16px rgba(88, 47, 162, 0.6),
+      0 16px 36px rgba(61, 30, 120, 0.65);
+    transform: translateY(-3px);
+  }
+
+</style>
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6 bg-light purple-shadow-box p-4 rounded">
+      <h1 class="text-center mb-4">Login</h1>
+      <hr>
+      <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        {{ form|crispy }}
+
+        <div class="text-center mt-4">
+          <button type="submit" class="btn custom-login-btn">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+  .home-img-box {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #f8f6ff;
+    box-shadow:
+      0 6px 12px rgba(88, 47, 162, 0.5),
+      0 12px 30px rgba(61, 30, 120, 0.55);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+
+  .home-img-box:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 8px 16px rgba(88, 47, 162, 0.6),
+      0 16px 36px rgba(61, 30, 120, 0.65);
+  }
+
+  .home-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+  }
+
+  @media (max-width: 576px) {
+    h1 {
+      font-size: 24px;
+    }
+
+    h5 {
+      font-size: 16px;
+    }
+
+    .home-img {
+      width: 150px;
+      height: 150px;
+    }
+
+    hr {
+      width: 80%;
+    }
+  }
+</style>
+
+<div class="container text-center py-5">
+  <h1>Django - CRM ... Management System</h1>
+  <br>
+  <h5><b>Keep track of your records effectively</b></h5>
+  <hr style="border: 1px solid #000; width: 70%; margin:25px auto">
+  <br>
+  <div class="home-img-box">
+    <img src="{% static 'crm_app/crm-home.jpg' %}" alt="CRM Image" class="home-img">
+  </div>
+</div>
+
+{% endblock %}
