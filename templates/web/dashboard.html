@@ -63,6 +63,7 @@
 
     .search-button:hover {
         background-color: #322f50;
+        color:#fff;
     }
 
     .table-wrapper {
@@ -75,6 +76,9 @@
         overflow-x: auto;
         margin: 0 auto 60px auto;
         max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     table.table {
@@ -108,6 +112,15 @@
             font-size: 13px;
         }
     }
+    .custom-alert {
+        background-color: #dcd9ec;
+        color: #322f50;
+        border: 1px solid #322f50;
+        border-radius: 10px;
+        font-size: 20px;
+        padding: 15px 25px;
+        box-shadow: 0 0 50px rgba(144, 86, 255, 0.25);
+    }
 </style>
 
 <h2 class="text-center mt-5">Welcome to the dashboard page, <b>{{ user }}</b></h2>
@@ -126,7 +139,7 @@
     <button type="submit" class="btn search-button">Search</button>
 </form>
 
-<div class="table-wrapper">
+<div class="table-wrapper text-center">
     {% if records %}
         <table class="table table-striped table-hover">
             <thead>
@@ -163,13 +176,11 @@
             </tbody>
         </table>
     {% elif search_query %}
-        <div class="alert alert-info text-center mx-auto mt-5"
-             style="max-width: 700px; background-color: #f0e9ff; color: #322f50; border: 1px solid #322f50; border-radius: 10px; font-size:18px;">
+        <div class="custom-alert">
             No records found for "<strong>{{ search_query }}</strong>". Try a different name.
         </div>
     {% else %}
-        <div class="alert alert-warning text-center mx-auto mt-5"
-             style="max-width: 700px; background-color: #dcd9ec; color: #322f50; border: 1px solid #322f50; border-radius: 10px; font-size:18px;">
+        <div class="custom-alert">
             You don't have any records yet.
         </div>
     {% endif %}
