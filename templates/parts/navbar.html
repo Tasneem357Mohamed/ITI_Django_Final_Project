@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
-    <a class="navbar-brand main-heading" href="{% url 'home' %}">
-
-      &nbsp; Django - CRM
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+  <div class="container">
+    <a class="navbar-brand font-weight-bold" href="{% url 'home' %}">
+      Django - CRM
     </a>
     <button
       class="navbar-toggler"
@@ -14,29 +14,33 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-      <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
-        <ul class="navbar-nav mr-auto">
-          &nbsp;     &nbsp;     &nbsp;
-          {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'dashboard' %}">Dashboard &nbsp; <i class="fa fa-home" aria-hidden="true"></i> </a>
-            </li>
-            &nbsp;     &nbsp;     &nbsp;
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">Logout &nbsp; <i class="fa fa-sign-out" aria-hidden="true"></i> </a>
-            </li>
-          {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'register' %}">Register &nbsp; <i class="fa fa-home" aria-hidden="true"></i> </a>
-            </li>
-            &nbsp;     &nbsp;     &nbsp;
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Login &nbsp; <i class="fa fa-sign-out" aria-hidden="true"></i> </a>
-            </li>
-            &nbsp;     &nbsp;     &nbsp;
-          {% endif %}
-        </ul>
-        &nbsp;     &nbsp;     &nbsp;
-        &nbsp;     &nbsp;     &nbsp;
-      </div>
-  </nav>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'dashboard' %}">
+            Dashboard <i class="fa fa-home"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">
+            Logout <i class="fa fa-sign-out"></i>
+          </a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}">
+            Register <i class="fa fa-user-plus"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">
+            Login <i class="fa fa-sign-in"></i>
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
