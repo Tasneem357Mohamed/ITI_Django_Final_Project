@@ -9,6 +9,8 @@
     <!-- Bootstrap & FontAwesome -->
     <link rel="stylesheet" href="https://bootswatch.com/5/pulse/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
     <style>
     html, body {
         height: 100%;
@@ -31,6 +33,35 @@
     footer {
         border-top: 1px solid #dee2e6;
     }
+
+     .custom-navbar {
+    background-color: #322f50 !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 0.8rem 1rem;
+  }
+
+  .custom-navbar .navbar-brand {
+    color: #ffffff;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+  }
+
+  .custom-navbar .nav-link {
+    color: #ddddff !important;
+    margin-left: 15px;
+    transition: transform 0.2s ease, color 0.2s ease;
+    font-size:17px;
+  }
+
+  .custom-navbar .nav-link:hover,
+  .custom-navbar .nav-link:focus {
+    transform: scale(1.1);
+  }
+
+  .custom-navbar .nav-item.active .nav-link {
+    color: #ffffff !important;
+    font-weight: bold;
+  }
 </style>
 
 </head>
@@ -48,5 +79,12 @@
             <small>Built with Django</small>
         </div>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
